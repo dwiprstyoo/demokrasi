@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\DataController;
+use App\Http\Controllers\ValidasiController;
+use App\Http\Controllers\GenerateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,5 @@ use App\Http\Controllers\DataController;
 
 Route::resource('/', PostController::class);
 Route::resource('post', PostController::class);
-Route::post('upload','PostController@store');
+Route::resource('validasi', ValidasiController::class);
+Route::resource('generate', GenerateController::class);

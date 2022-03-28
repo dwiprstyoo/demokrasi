@@ -10,9 +10,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        $gambar = Post::get();
         $posts = Post::latest()->get();
-        return view('posts.index', compact('posts'), ['gambar' => $gambar]);
+        return view('posts.index', compact('posts'));
     }
 
     public function create()
@@ -27,7 +26,8 @@ class PostController extends Controller
             'nik' => 'required',
             'no_telp' => 'required',
             'isi_laporan' => 'required',
-            'file' => 'required|image|mimes:jpeg,png,jpg|max:2048'
+            'status' => 'required'
+            // 'file' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
         // $file = $request->file('file');
@@ -35,24 +35,24 @@ class PostController extends Controller
         // $directory = 'data_file';
         // $file -> move($directory,$filename);
 
-        $request = new Post;
-        $input = Post::all();
-        $file = $request->file ;
+        // $request = new Post;
+        // $input = Post::all();
+        // $file = $request->file ;
         
-        $destinationPath = 'menu_files';
-        $filename = $file->getClientOriginalName();
-        $upload_success = Post::file('file')->move($destinationPath, $filename);
+        // $destinationPath = 'menu_files';
+        // $filename = $file->getClientOriginalName();
+        // $upload_success = Post::file('file')->move($destinationPath, $filename);
 
-        echo "<PRE>";
-        print_r($filename);
-        die();
+        // echo "<PRE>";
+        // print_r($filename);
+        // die();
 
         $post = Post::create([
             'nama' => $request->nama,
             'nik' => $request->nik,
             'no_telp' => $request->no_telp,
-            'isi_laporan' => $request->isi_laporan,
-            'file' => $file
+            'isi_laporan' => $request->isi_laporan
+            // 'file' => $file
 
         ]);
 
@@ -85,21 +85,24 @@ class PostController extends Controller
             'nik' => 'required',
             'no_telp' => 'required',
             'isi_laporan' => 'required',
-            'file'     => 'required|file|mimes:png,jpg,jpeg'
+            'status' => 'required'
+            // 'file'     => 'required|file|mimes:png,jpg,jpeg'
         ]);
 
-        $file = $request->file('file');
-        $file->storeAs('public/blogs', $file->hashName());
+        // $file = $request->file('file');
+        // $file->storeAs('public/blogs', $file->hashName());
 
+
+        // $post = Post::findOrFail($id);
 
         $post = Post::findOrFail($id);
-
         $post->update([
             'nama' => $request->nama,
             'nik' => $request->nik,
             'no_telp' => $request->no_telp,
             'isi_laporan' => $request->isi_laporan,
-            'file'     => $file->hashName()
+            'status' => $request->status
+            // 'file'     => $file->hashName()
         ]);
 
         if ($post) {

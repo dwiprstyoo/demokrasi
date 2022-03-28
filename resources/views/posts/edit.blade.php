@@ -89,6 +89,17 @@
                                 @enderror
                             </div>
 
+                            <div>
+                            <input type="hidden" class="form-control @error('status') is-invalid @enderror"
+                                    name="status" value="{{ old('status', $post->status) }}">
+
+                                @error('status')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
                             <button type="submit" class="btn btn-md btn-primary">Update</button>
                             <a href="{{ route('post.index') }}" class="btn btn-md btn-secondary">back</a>
                         </form>

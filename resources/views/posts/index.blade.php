@@ -43,6 +43,7 @@
                                     <th scope="col">No. Telp</th>
                                     <th scope="col">Tanggal Pengaduan</th>
                                     <th scope="col">Gambar</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -55,9 +56,10 @@
                                     <td>{{ $post->isi_laporan }}</td>
                                     <td>{{ $post->no_telp }}</td>
                                     <td>{{ $post->updated_at }}</td>
-                                    <td>
+                                    <!-- <td>
                                     <img src="/data_file/{{$post->file}}" height="100px" width="100px">
-                                    </td>
+                                    </td> -->
+                                    <td>{{ $post->status }}</td>
                                     <td class="text-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                             action="{{ route('post.destroy', $post->id) }}" method="POST">

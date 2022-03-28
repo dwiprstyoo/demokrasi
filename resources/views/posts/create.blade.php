@@ -89,16 +89,27 @@
                                 @enderror
                             </div>
 
-                            {{  csrf_field()  }}
+                            <!-- {{  csrf_field()  }}
                             <div class="form-group">
                                 <label for="file">Gambar</label>
                                 <input type="file" class="form-control @error('file') is-invalid @enderror" name="file" id="file" value="{{ old('file') }}" required>
                             
-                                <!-- error message untuk title -->
-                                @error('file')
+                                <-- error message untuk title -->
+                                <!-- @error('file')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
+                                @enderror
+                            </div> -->
+
+                            <div>
+                            <input type="hidden" class="form-control @error('status') is-invalid @enderror"
+                                    name="status">
+
+                                @error('status')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
 
