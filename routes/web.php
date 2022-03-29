@@ -16,7 +16,17 @@ use App\Http\Controllers\GenerateController;
 |
 */
 
-Route::resource('/', PostController::class);
-Route::resource('post', PostController::class);
-Route::resource('validasi', ValidasiController::class);
-Route::resource('generate', GenerateController::class);
+Route::get('/', function() {
+    return view ('auth.login');
+});
+
+
+Route::resource('post', PostController::class)->middleware('user');
+Route::resource('validasi', ValidasiController::class)->middleware('is_admin');
+Route::resource('generate', GenerateController::class)->middleware('is_petugas');
+
+Auth::routes();
+
+// Route::get('post', [App\Http\Controllers\PostController::class, 'index'])->name('post');
+// Route::get('validasi', [App\Http\Controllers\ValidasiController::class, 'index'])->name('validasi')->middleware('is_admin');
+// Route::get('generate', [App\Http\Controllers\GenerateController::class, 'index'])->name('generate')->middleware('is_petugas');

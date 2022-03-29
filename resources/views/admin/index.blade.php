@@ -59,7 +59,7 @@
                                     <td>{{ $post->status }}</td>
                                     <td class="text-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"  method="POST">
-                                            <a href="{{ route('validasi.edit', $post->id) }}"
+                                        <a href="{{ route('validasi.edit', $post->id) }}"
                                                 class="btn btn-sm btn-primary">VALIDATE</a>
                                             @csrf
                                         </form>
@@ -73,10 +73,21 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="btn btn-md btn-danger mb-3 float-left">
+                    <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

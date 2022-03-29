@@ -42,7 +42,7 @@
                                     <th scope="col">Isi Laporan</th>
                                     <th scope="col">No. Telp</th>
                                     <th scope="col">Tanggal Pengaduan</th>
-                                    <th scope="col">Gambar</th>
+                                    <!-- <th scope="col">Gambar</th> -->
                                     <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -78,7 +78,16 @@
                                 @endforelse
                             </tbody>
                         </table>
-                    </div>
+                        <div class="btn btn-md btn-danger mb-3 float-left">
+                    <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>
