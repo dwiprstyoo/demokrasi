@@ -26,7 +26,7 @@ class PostController extends Controller
             'nik' => 'required',
             'no_telp' => 'required',
             'isi_laporan' => 'required',
-            'status' => 'required'
+            // 'status' => 'required'
             // 'file' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
